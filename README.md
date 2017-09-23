@@ -33,8 +33,8 @@ Publish on github pages
 Run:
 npm i -g angular-cli-ghpages
 
-ng build --prod --base-href https://tarunbhartiya7.github.io/ng2-fb-demo/
+ng build --prod --base-href https://tarunbhartiya7.github.io/ng2-fb-todo/
 
 ngh
 
-Go to https://tarunbhartiya7.github.io/ng2-fb-demo/ once you get successfully published....Hurray!!!!
+Go to https://tarunbhartiya7.github.io/ng2-fb-todo/ once you get successfully published....Hurray!!!!

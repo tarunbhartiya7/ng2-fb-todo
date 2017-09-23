@@ -1,3 +1,4 @@
+import { Task } from './../task.model';
 import { TaskService } from './../service/task.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
@@ -6,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './task.component.html'
 })
 export class TaskComponent implements OnInit {
-  @Input() task = [];
+  @Input() task:Task = {description:''};
   @Output() onDeleteTask = new EventEmitter<any>();
   // @Output() onUpdateTask = new EventEmitter<any>();
 
@@ -21,7 +22,6 @@ export class TaskComponent implements OnInit {
   }
 
   updateTask(){
-    // this.onUpdateTask.emit(this.task);
     this.taskService.update.emit(this.task);
   }
 }

@@ -1,3 +1,4 @@
+import { Task } from './../task.model';
 import { TaskService } from './../service/task.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
@@ -7,8 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class TaskFormComponent implements OnInit {
   update: boolean = false;
-  task: any = {};
-  description = '';
+  task:Task = {description:''};
   @Output() onEmitTask = new EventEmitter<any>();
   constructor(public taskService: TaskService) { 
     this.taskService.update.subscribe(
@@ -24,6 +24,6 @@ export class TaskFormComponent implements OnInit {
 
   addTask(){
     this.onEmitTask.emit(this.task);
-    this.task = {};
+    this.task = {description:''};
   }
 }
