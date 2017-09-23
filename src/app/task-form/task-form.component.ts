@@ -15,7 +15,6 @@ export class TaskFormComponent implements OnInit {
       data => {
         this.update = true;
         this.task = data;
-        this.description = this.task.description;
       }
     );
   }
@@ -25,7 +24,6 @@ export class TaskFormComponent implements OnInit {
 
   addTask(){
     this.onEmitTask.emit(this.task);
-    this.description = '';
     this.task = {};
   }
 }
