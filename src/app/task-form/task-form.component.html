@@ -1,0 +1,10 @@
+<h2>New Task Form</h2>
+<form>
+  <div class="form-group">
+    <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter your task here..." 
+        name="name" [(ngModel)]="task.description" autofocus>
+  </div>
+  <button class="btn btn-info" (click)="addTask()">Create</button>
+  
+</form>

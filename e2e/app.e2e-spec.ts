@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('ngfbtdo App', () => {
+describe('navbars App', () => {
   let page: AppPage;
 
   beforeEach(() => {
