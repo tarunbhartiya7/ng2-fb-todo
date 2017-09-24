@@ -13,7 +13,7 @@
 <div class="container">
     <h2 *ngIf="tasksCopy.length > 0">Items</h2>
     <div *ngFor="let task of tasks | async">
-        <app-task [task]='task' (onDeleteTask)='deleteTask(task.$key)'></app-task>
+        <app-task [task]='task' (onDeleteTask)='deleteTask(task.$key)' (onUpdateTask)='updateTask($event.$key, $event)'></app-task>
     </div>
     <div>
         <button *ngIf="tasksCopy.length > 0" type="button" class="btn btn-danger" (click)="deleteEverything()">
@@ -21,6 +21,6 @@
         </button>  
     </div>
     <app-task-form 
-    (onEmitTask)='$event.$key ? updateTask($event.$key, $event.description) : pushTask($event.description)'>
+    (onEmitTask)='$event.$key ? updateTask($event.$key, $event) : pushTask($event.description)'>
     </app-task-form>
 </div>

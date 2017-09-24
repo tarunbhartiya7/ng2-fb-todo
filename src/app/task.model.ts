@@ -1,5 +1,8 @@
 export class Task{
-    constructor(public description: string){
+    constructor(
+        public description: string,
+        public active: boolean
+    ){
 
     }
 }

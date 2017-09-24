@@ -7,9 +7,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './task.component.html'
 })
 export class TaskComponent implements OnInit {
-  @Input() task:Task = {description:''};
+  @Input() task:Task;
   @Output() onDeleteTask = new EventEmitter<any>();
-  // @Output() onUpdateTask = new EventEmitter<any>();
+  @Output() onUpdateTask = new EventEmitter<any>();
 
   constructor(public taskService: TaskService) {
   }
@@ -24,4 +24,10 @@ export class TaskComponent implements OnInit {
   updateTask(){
     this.taskService.update.emit(this.task);
   }
+
+  onComplete(){
+    this.task.active = !this.task.active;
+    this.onUpdateTask.emit(this.task);
+  }
+
 }

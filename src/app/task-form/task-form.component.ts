@@ -8,7 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class TaskFormComponent implements OnInit {
   update: boolean = false;
-  task:Task = {description:''};
+  task:Task = {description:'', active: true};
   @Output() onEmitTask = new EventEmitter<any>();
   constructor(public taskService: TaskService) { 
     this.taskService.update.subscribe(
@@ -24,6 +24,6 @@ export class TaskFormComponent implements OnInit {
 
   addTask(){
     this.onEmitTask.emit(this.task);
-    this.task = {description:''};
+    this.task = {description:'', active: true};
   }
 }

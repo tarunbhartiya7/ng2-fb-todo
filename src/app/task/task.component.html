@@ -1,7 +1,15 @@
 <div class="panel panel-default">
   <div class="panel-body">{{ task.description }}</div>
   <div class="panel-footer">
-    <button type="button" class="btn btn-success" (click)="updateTask()">Update</button>
-    <button type="button" class="btn btn-danger" (click)="deleteTask()">Delete</button>
+    <button type="button" class="btn btn-success" (click)="updateTask()" [disabled]='!task.active'>
+      Update
+    </button>
+    <button type="button" class="btn btn-danger" (click)="deleteTask()" [disabled]='!task.active'>
+      Delete
+    </button>
+    <button type="button" class="btn" [ngClass]="{'btn-primary': task.active, 'btn-default': task.active}"
+      (click)="onComplete()">
+      {{ task.active ? 'Mark as Completed' : 'Mark as Active' }}
+    </button>
   </div>
 </div>

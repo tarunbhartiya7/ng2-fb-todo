@@ -1,3 +1,4 @@
+import { Task } from './task.model';
 import { Component } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
@@ -22,11 +23,11 @@ export class AppComponent {
 
 
   pushTask(newTask: string) {
-    this.tasks.push({ description: newTask});
+    this.tasks.push({ active: true, description: newTask});
   }
 
-  updateTask(key: string, updatedTask: string) {
-    this.tasks.update(key, { description: updatedTask });
+  updateTask(key: string, updatedTask: Task) {
+    this.tasks.update(key, { active: updatedTask.active, description: updatedTask.description });
   }
 
   deleteTask(key: string) {    
