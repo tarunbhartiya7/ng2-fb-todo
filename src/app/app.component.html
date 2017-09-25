@@ -1,16 +1,19 @@
-<!-- <ul>
-    <li *ngFor="let item of items | async">
-        <input type="text" #updatetext [value]="item.text"/>
-        <button (click)="updateItem(item.$key, updatetext.value)">Update</button>
-        <button (click)="deleteItem(item.$key)">Delete</button>
-    </li>
-</ul>
-<input type="text" #newitem (keyup.enter)="addItem(newitem.value)"/>
-<button (click)="addItem(newitem.value); newitem.value=''">Add</button>
-<button type="submit" class="btn btn-danger" (click)="deleteEverything()">Delete All</button> -->
+<!-- start of navbar section -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">My TODO App</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li *ngIf="!(user | async)"><a (click)="login()"><span class="glyphicon glyphicon-user"></span> Login</a></li>            
+            <li *ngIf="(user | async)"><a (click)="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>                                    
+        </ul>
+    </div>
+</nav>
+<!-- end of navbar section -->
 
-<!-- <app-task></app-task> -->
-<div class="container">
+<!-- Below content is shown When user is logged in -->
+<div class="container" *ngIf="(user | async)">
     <h2 *ngIf="tasksCopy.length > 0">Items</h2>
     <div *ngFor="let task of tasks | async">
         <app-task [task]='task' (onDeleteTask)='deleteTask(task.$key)' (onUpdateTask)='updateTask($event.$key, $event)'></app-task>
@@ -20,7 +23,16 @@
             Delete Entire List
         </button>  
     </div>
-    <app-task-form 
-    (onEmitTask)='$event.$key ? updateTask($event.$key, $event) : pushTask($event.description)'>
+    <app-task-form (onEmitTask)='$event.$key ? updateTask($event.$key, $event) : pushTask($event.description)'>
     </app-task-form>
 </div>
+
+<!-- Below content is shown When user is not logged in -->
+<div class="container" *ngIf="!(user | async)">
+    <div class="jumbotron">
+        <h1>Angular Firebase Todo POC</h1>
+        <p>To access the app login with your google account.</p>
+    </div>
+</div>
+
+
